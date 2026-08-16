@@ -1,13 +1,4 @@
-Customer-Churn-Prediction/
-│
-├── README.md
-├── requirements.txt
-├── .gitignore
-│
-└── notebooks/
-     ├── 02_Data_Understanding.ipynb
-     ├── 03_Data_Cleaning.ipynb
-     ├── 04_EDA.ipynb
-     ├── 05_Statistical_Analysis.ipynb
-     ├── 06_Feature_Engineering.ipynb
-     └── 07_08_Feature_Selection_Machine_Learning_Pipeline.ipynb
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.env
