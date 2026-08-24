@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📡 Customer Churn Prediction & Business Intelligence
+# 📡 Churn Propensity Modeling using Statistical Inference, ML Model Benchmarking & SHAP-Based Feature Attribution
 
 ### Turning telecom customer data into explainable, retention-focused decisions
 
