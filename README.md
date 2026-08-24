@@ -1,270 +1,259 @@
+<div align="center">
 
-# Customer Churn Prediction & Business Intelligence
+# 📡 Customer Churn Prediction & Business Intelligence
 
-## 📌 Project Overview
+### Turning telecom customer data into explainable, retention-focused decisions
 
-This project develops an end-to-end **Customer Churn Prediction system** for a telecommunications business.
+[![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Scikit-learn](https://img.shields.io/badge/scikit--learn-ML-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
+[![SHAP](https://img.shields.io/badge/Explainable_AI-SHAP-8A2BE2?style=for-the-badge)](https://shap.readthedocs.io/)
+[![Status](https://img.shields.io/badge/Project-Complete-2EA44F?style=for-the-badge)](#)
 
-The objective is to identify customers who are likely to churn and understand the factors associated with customer churn so that businesses can take proactive customer-retention actions.
+**An end-to-end classification project combining statistical validation, business-driven feature engineering, five machine-learning models, threshold optimization, and explainable AI.**
 
-The project combines:
+[🎯 Business Problem](#-business-problem) •
+[🔄 Workflow](#-end-to-end-workflow) •
+[🏆 Results](#-model-performance) •
+[💡 Insights](#-business-insights) •
+[📁 Structure](#-repository-structure)
 
-- Exploratory Data Analysis
-- Statistical Analysis
-- Business-driven Feature Engineering
-- Machine Learning
-- Model Evaluation
-- Model Optimization
-- Explainable AI using SHAP
-- Business Interpretation
-
----
-
-## 🎯 Problem Statement
-
-Customer churn is a major business challenge for telecommunications companies because losing existing customers can negatively affect recurring revenue and customer lifetime value.
-
-The goal of this project is to:
-
-1. Understand customer churn patterns.
-2. Identify variables associated with churn.
-3. Build machine learning models to predict churn.
-4. Compare different classification algorithms.
-5. Optimize the model for better identification of potential churners.
-6. Explain model predictions using SHAP.
-7. Translate analytical findings into actionable business recommendations.
+</div>
 
 ---
 
-## 📊 Dataset
+## 👀 Recruiter Snapshot
 
-The project uses the **IBM Telco Customer Churn dataset**.
+| Area | What this project demonstrates |
+|---|---|
+| **Business objective** | Identify customers at risk of churn and support proactive retention |
+| **Data** | IBM Telco Customer Churn dataset; **7,021 cleaned customer records** |
+| **Analytical depth** | EDA, chi-square tests, independent-samples t-tests, and correlation analysis |
+| **Feature engineering** | **26 business-driven features**, producing a 46-column modelling dataset |
+| **Model comparison** | Logistic Regression, Decision Tree, Random Forest, LightGBM, and XGBoost |
+| **Best baseline** | **Logistic Regression — ROC-AUC 84.16%** |
+| **Business-focused optimization** | Threshold tuning increased churn recall to approximately **74%** |
+| **Explainability** | SHAP global and customer-level explanations |
+| **Business output** | Actionable retention strategies for high-risk customer segments |
 
-The original dataset contains approximately 7,000 customer records and includes information related to:
-
-- Customer demographics
-- Tenure
-- Phone services
-- Internet services
-- Online security
-- Technical support
-- Streaming services
-- Contract type
-- Payment method
-- Monthly charges
-- Total charges
-- Churn status
-
-### Dataset Link
-
-https://www.kaggle.com/datasets/blastchar/telco-customer-churn
+> **Key result:** Threshold optimization intentionally trades some precision for higher recall, helping the business identify substantially more potential churners before they leave.
 
 ---
 
-## 🔄 Project Workflow
+## 🎯 Business Problem
 
-### Phase 1–2: Problem & Data Understanding
+Customer churn directly affects recurring revenue and customer lifetime value. A telecom business therefore needs more than a prediction—it needs to understand **who may churn, which factors contribute to that risk, and how to act on the result**.
 
-Defined the telecom customer churn problem and examined the structure, variables and business context of the dataset.
+This project answers four practical questions:
 
-### Phase 3: Data Cleaning
+1. 🔍 Which customer characteristics are associated with churn?
+2. 🤖 How accurately can churn be predicted?
+3. ⚖️ Which decision threshold best supports retention outreach?
+4. 🧠 Can each prediction be explained to business stakeholders?
 
-Performed:
+---
 
-- Duplicate detection and removal
-- Missing-value analysis
-- Data-type correction
-- Numerical conversion
-- Target-variable encoding
+## 📊 Dataset at a Glance
 
-After cleaning, the dataset contained **7,021 customer records**.
+The project uses the [IBM Telco Customer Churn dataset](https://www.kaggle.com/datasets/blastchar/telco-customer-churn).
 
-### Phase 4: Exploratory Data Analysis
+| Category | Examples |
+|---|---|
+| 👤 Demographics | Gender, senior-citizen status, partner, dependents |
+| ⏳ Customer relationship | Tenure and contract type |
+| 🌐 Services | Phone, internet, security, technical support, streaming |
+| 💳 Billing | Monthly charges, total charges, payment method |
+| 🎯 Target | Churn status |
 
-Performed EDA to understand:
+- **Cleaned observations:** 7,021
+- **Observed churn rate:** approximately 26.45%
+- **Final feature-engineered dataset:** 7,021 rows × 46 columns
 
-- Churn distribution
-- Numerical variable distributions
-- Customer tenure
-- Monthly and total charges
-- Contract type
-- Internet service
-- Payment methods
-- Customer service usage
+---
 
-The overall churn rate was approximately **26.45%**.
+## 🔄 End-to-End Workflow
 
-### Phase 5: Statistical Analysis
+```mermaid
+flowchart TD
+    A["📥 IBM Telco Data"] --> B["🧹 Data Cleaning"]
+    B --> C["📊 Exploratory Analysis"]
+    C --> D["🧪 Statistical Validation"]
+    D --> E["⚙️ Feature Engineering"]
+    E --> F["🤖 Train 5 ML Models"]
+    F --> G["📈 Evaluate & Compare"]
+    G --> H["🎚️ Optimize Threshold"]
+    H --> I["🧠 Explain with SHAP"]
+    I --> J["💼 Retention Insights"]
+```
 
-Statistical methods were used to validate relationships observed during EDA.
+<details>
+<summary><strong>🔎 View the work completed in each phase</strong></summary>
 
-Methods included:
+### 1. Data cleaning
 
-- Chi-square tests for categorical variables
-- Independent-samples t-tests
-- Correlation analysis
+- Detected and removed duplicates
+- Assessed missing values
+- Corrected data types and converted numerical fields
+- Encoded the churn target
 
-A significance level of **α = 0.05** was used.
+### 2. Exploratory data analysis
 
-The analysis helped distinguish statistically significant relationships from relationships that were not supported by sufficient statistical evidence.
+- Analysed churn distribution, tenure, charges, contracts, internet service, payment methods, and service usage
+- Compared customer profiles across churn outcomes
 
-### Phase 6: Feature Engineering
+### 3. Statistical analysis
 
-Created **26 business-driven features** from the original customer variables.
+- Applied chi-square tests to categorical variables
+- Used independent-samples t-tests for numerical comparisons
+- Examined correlations
+- Used a significance level of **α = 0.05**
 
-Examples include:
+### 4. Business-driven feature engineering
 
-- `TenureGroup`
-- `IsNewCustomer`
-- `LongTermCustomer`
-- `CustomerAgeScore`
-- `ServiceCount`
-- `EntertainmentServices`
-- `SecurityServices`
-- `PremiumUser`
-- `MultiServiceUser`
-- `ChargeCategory`
-- `RevenueSegment`
-- `AvgChargePerMonth`
-- `HighMonthlyCharge`
-- `FamilyCustomer`
-- `IndependentCustomer`
-- `LongTermContract`
-- `AutoPayment`
-- `ElectronicPayment`
-- `PaperlessCustomer`
-- `InternetUser`
-- `FiberCustomer`
-- `InternetAddOnCount`
-- `CustomerValueScore`
-- `LoyaltyScore`
-- `HighRiskCustomer`
+Created 26 features, including:
 
-The feature-engineered dataset contains **7,021 records and 46 columns**.
+`TenureGroup` · `IsNewCustomer` · `LongTermCustomer` · `ServiceCount` ·
+`SecurityServices` · `PremiumUser` · `RevenueSegment` ·
+`AvgChargePerMonth` · `LongTermContract` · `AutoPayment` ·
+`FiberCustomer` · `CustomerValueScore` · `LoyaltyScore` · `HighRiskCustomer`
 
-### Phase 7–8: Machine Learning
+### 5. Modelling and explainability
 
-Built and compared multiple classification algorithms:
+- Compared five classification algorithms
+- Evaluated accuracy, precision, recall, F1-score, and ROC-AUC
+- Tuned the classification threshold around business priorities
+- Used SHAP for global feature importance and individual customer explanations
 
-- Logistic Regression
-- Decision Tree
-- Random Forest
-- LightGBM
-- XGBoost
+</details>
 
-Models were evaluated using:
+---
 
-- Accuracy
-- Precision
-- Recall
-- F1-score
-- ROC-AUC
+## 🏆 Model Performance
 
-### Model Performance
-
-| Model | Accuracy | Precision | Recall | F1 | ROC-AUC |
-|---|---:|---:|---:|---:|---:|
-| Logistic Regression | 80.78% | 67.96% | 51.88% | 58.84% | 84.16% |
-| Decision Tree | 78.79% | 64.68% | 43.82% | 52.24% | 82.05% |
+| Model | Accuracy | Precision | Recall | F1-score | ROC-AUC |
+|:---|---:|---:|---:|---:|---:|
+| 🥇 **Logistic Regression** | **80.78%** | **67.96%** | **51.88%** | **58.84%** | **84.16%** |
 | Random Forest | 79.50% | 65.33% | 48.12% | 55.42% | 83.82% |
-| LightGBM | 78.29% | 61.20% | 49.19% | 54.55% | 82.98% |
 | XGBoost | 77.79% | 60.20% | 47.58% | 53.15% | 83.02% |
+| LightGBM | 78.29% | 61.20% | 49.19% | 54.55% | 82.98% |
+| Decision Tree | 78.79% | 64.68% | 43.82% | 52.24% | 82.05% |
 
-Logistic Regression provided the strongest baseline ROC-AUC among the evaluated models.
+### Why Logistic Regression won
 
-### Phase 9: Threshold Optimization
+Logistic Regression produced the strongest baseline ROC-AUC while remaining transparent and easy to communicate. This made it a strong fit for a business setting where both predictive performance and interpretability matter.
 
-The classification threshold was optimized to improve the identification of potential churners.
+### 🎚️ Threshold Optimization
 
-The optimized model achieved approximately:
+A default threshold is not always the best business decision. Missing a true churner can be more costly than contacting a customer who ultimately stays, so the threshold was adjusted to detect more at-risk customers.
 
-- Recall: **74%**
-- Precision: **53%**
-- F1-score: **62%**
-- Accuracy: **76%**
+| Metric | Optimized result |
+|---|---:|
+| 🎯 Recall | **~74%** |
+| 🔎 Precision | **~53%** |
+| ⚖️ F1-score | **~62%** |
+| ✅ Accuracy | **~76%** |
 
-The optimization prioritizes identifying more potential churners, which can be useful when the business wants to proactively target customers for retention.
-
-### Phase 10: Explainable AI
-
-SHAP (SHapley Additive exPlanations) was used to understand model predictions.
-
-The analysis included:
-
-- SHAP summary plots
-- Feature importance
-- Dependence plots
-- Individual customer explanations
-- Waterfall/force explanations
-
-Important predictive factors included variables related to:
-
-- Tenure
-- Average charges
-- Service usage
-- Internet service
-- Contract type
-- Customer support/security services
-
-SHAP helped connect machine learning predictions with interpretable business insights.
+**Interpretation:** The optimized model captures more potential churners, creating a larger intervention window for the retention team.
 
 ---
 
-## 💼 Business Insights
+## 🧠 Explainable AI with SHAP
 
-The analysis indicates that customer churn is associated with several customer characteristics, including:
+Prediction alone does not tell a business what to do. SHAP was used to connect model output with understandable customer-level reasoning.
 
-- Customer tenure
-- Contract type
-- Monthly charges
-- Internet service
-- Payment method
-- Service and support usage
+```mermaid
+flowchart LR
+    A["Customer Profile"] --> B["Churn Model"]
+    B --> C["Risk Probability"]
+    B --> D["SHAP Explanation"]
+    C --> E["Retention Priority"]
+    D --> E
+```
 
-These findings can support targeted retention strategies such as:
+The explainability analysis includes:
 
-- Early-stage customer engagement
-- Targeted retention offers
-- Contract-based incentives
-- Improved technical support
-- Security/service bundles
-- Personalized customer interventions
+- 🌍 Global feature importance
+- 📉 SHAP summary and dependence plots
+- 👤 Individual customer explanations
+- 💧 Waterfall and force plots
+- 💼 Translation of predictive factors into business actions
 
-The project focuses on **predictive associations rather than causal claims**.
-
----
-
-## 🛠️ Technologies Used
-
-- Python
-- Pandas
-- NumPy
-- Matplotlib
-- Scikit-learn
-- LightGBM
-- XGBoost
-- SHAP
-- Statistical Analysis
-- Google Colab
+Important predictive factors were associated with **tenure, charges, service usage, internet service, contract type, and support/security services**.
 
 ---
 
-## 📁 Project Structure
+## 💡 Business Insights
+
+| Observed pattern | Potential retention response |
+|---|---|
+| 🆕 New or low-tenure customers may require early attention | Improve onboarding and schedule early engagement |
+| 📄 Contract type is associated with churn behaviour | Offer relevant longer-term contract incentives |
+| 💸 Charges contribute to customer risk profiles | Review pricing perceptions and personalize offers |
+| 🛡️ Support and security-service usage matters | Bundle technical support and security services |
+| 🌐 Internet-service characteristics help distinguish risk | Design service-specific retention campaigns |
+| 🚨 High predicted probability + SHAP risk drivers | Prioritize the customer for targeted intervention |
+
+> The project identifies **predictive associations**, not causal effects. Retention actions should be validated through controlled business experiments.
+
+---
+
+## 🛠️ Technology Stack
+
+| Category | Tools |
+|---|---|
+| 💻 Language | Python |
+| 🧹 Data manipulation | Pandas, NumPy |
+| 📊 Visualization | Matplotlib |
+| 🧪 Statistical analysis | Chi-square tests, t-tests, correlation analysis |
+| 🤖 Machine learning | Scikit-learn, LightGBM, XGBoost |
+| 🧠 Explainable AI | SHAP |
+| 📓 Development | Google Colab, Jupyter Notebook |
+
+---
+
+## 📁 Repository Structure
 
 ```text
 Customer-Churn-Prediction/
 │
 ├── README.md
-│
 ├── notebooks/
 │   ├── 01_Data_Cleaning.ipynb
 │   ├── 02_EDA.ipynb
 │   ├── 03_Statistical_Analysis.ipynb
 │   ├── 04_Feature_Engineering.ipynb
 │   └── 05_Feature_Selection_Machine_Learning.ipynb
-│
 ├── results/
-│
 ├── visuals/
-│
 └── requirements.txt
+```
+
+---
+
+## 🚀 How to Explore the Project
+
+1. Review the notebooks in numerical order.
+2. Begin with data cleaning and EDA to understand the customer population.
+3. Continue to statistical analysis and business-driven feature engineering.
+4. Open the modelling notebook to compare algorithms and threshold results.
+5. Review SHAP outputs to connect predictions with retention decisions.
+
+---
+
+## 🌟 What Makes This Project Different?
+
+- ✅ Goes beyond model accuracy by connecting evaluation to a real business cost
+- ✅ Combines statistical inference with machine learning
+- ✅ Engineers features using telecom and customer-lifecycle logic
+- ✅ Compares linear, tree-based, bagging, and boosting approaches
+- ✅ Makes predictions understandable through SHAP
+- ✅ Converts technical output into practical retention recommendations
+
+---
+
+<div align="center">
+
+### ⭐ If this project helped you, consider starring the repository
+
+**Built as an end-to-end applied statistics, machine-learning, and business-intelligence project.**
+
+</div>
